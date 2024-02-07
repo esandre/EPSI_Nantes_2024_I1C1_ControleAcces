@@ -11,7 +11,9 @@ namespace ControleAcces.Test
             // ET une porte lui étant liée
             var lecteur = new LecteurFake();
             lecteur.SimulerPrésentationBadge();
+
             var porte = new PorteSpy();
+            var moteur = new MoteurOuverture(porte);
 
             // QUAND le moteur d'ouverture interroge ce lecteur
             MoteurOuverture.Interroger(lecteur);
