@@ -2,12 +2,15 @@
 
 public class MoteurOuverture
 {
+    private readonly IPorte _porte;
+
     public MoteurOuverture(IPorte porte)
     {
-        porte.Ouvrir();
+        _porte = porte;
     }
 
-    public static void Interroger(ILecteur lecteur)
+    public void Interroger(ILecteur lecteur)
     {
+        _porte.Ouvrir();
     }
 }

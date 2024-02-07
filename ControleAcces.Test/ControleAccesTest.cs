@@ -16,7 +16,7 @@ namespace ControleAcces.Test
             var moteur = new MoteurOuverture(porte);
 
             // QUAND le moteur d'ouverture interroge ce lecteur
-            MoteurOuverture.Interroger(lecteur);
+            moteur.Interroger(lecteur);
 
             // ALORS cette porte s'ouvre
             Assert.True(porte.MethodeOuvrirAppelée);
