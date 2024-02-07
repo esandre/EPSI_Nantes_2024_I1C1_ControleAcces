@@ -71,5 +71,25 @@ namespace ControleAcces.Test
             // ALORS cette porte s'ouvre une fois
             Assert.Equal(1, porte.NombreAppelsMéthodeOuvrir);
         }
+
+        [Fact]
+        public void CasPlusieursPortes()
+        {
+            // ETANT DONNE un lecteur ayant détecté un badge
+            // ET deux portes lui étant liées
+            var lecteur = new LecteurFake();
+            lecteur.SimulerPrésentationBadge();
+
+            var porte1 = new PorteSpy();
+            var porte2 = new PorteSpy();
+            var moteur = new MoteurOuverture(porte1, porte2);
+
+            // QUAND le moteur d'ouverture interroge ce lecteur
+            moteur.Interroger(lecteur);
+
+            // ALORS ces portes s'ouvrent
+            Assert.Equal(1, porte1.NombreAppelsMéthodeOuvrir);
+            Assert.Equal(1, porte2.NombreAppelsMéthodeOuvrir);
+        }
     }
 }

@@ -2,16 +2,19 @@
 
 public class MoteurOuverture
 {
-    private readonly IPorte _porte;
+    private readonly IPorte[] _portes;
 
-    public MoteurOuverture(IPorte porte)
+    public MoteurOuverture(params IPorte[] portes)
     {
-        _porte = porte;
+        _portes = portes;
     }
 
     public void Interroger(ILecteur lecteur)
     {
-        if(lecteur.BadgeDétecté)
-            _porte.Ouvrir();
+        if (!lecteur.BadgeDétecté) 
+            return;
+
+        foreach (var porte in _portes)
+            porte.Ouvrir();
     }
 }
