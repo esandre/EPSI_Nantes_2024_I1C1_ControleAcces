@@ -9,12 +9,12 @@ public class MoteurOuverture
         _portes = portes;
     }
 
-    public void Interroger(ILecteur lecteur)
+    public void Interroger(params ILecteur[] lecteurs)
     {
-        if (!lecteur.BadgeDétecté) 
-            return;
-
-        foreach (var porte in _portes)
-            porte.Ouvrir();
+        foreach (var lecteur in lecteurs.Where(lecteur => lecteur.BadgeDétecté))
+        {
+            foreach (var porte in _portes)
+                porte.Ouvrir();
+        }
     }
 }
