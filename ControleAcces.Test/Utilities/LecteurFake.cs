@@ -14,7 +14,7 @@ internal class LecteurFake : ILecteur
         }
     }
 
-    public void SimulerPrésentationBadge()
+    public void SimulerPrésentationBadge(Badge badge)
     {
         _badgeDétectéAuProchainAppel = true;
     }

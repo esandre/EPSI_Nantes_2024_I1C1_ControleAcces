@@ -23,6 +23,24 @@ namespace ControleAcces.Test
         }
 
         [Fact]
+        public void CasNominal()
+        {
+            // ETANT DONNE un lecteur ayant détecté un badge bloqué
+            // ET une porte lui étant liée
+            var lecteur = new LecteurFake();
+            lecteur.SimulerPrésentationBadge(Badge.Bloqué);
+
+            var porte = new PorteSpy();
+            var moteur = new MoteurOuverture(porte);
+
+            // QUAND le moteur d'ouverture interroge ce lecteur
+            moteur.Interroger(lecteur);
+
+            // ALORS cette porte s'ouvre
+            Assert.Equal(1, porte.NombreAppelsMéthodeOuvrir);
+        }
+
+        [Fact]
         public void CasSansInterrogation()
         {
             // ETANT DONNE un lecteur ayant détecté un badge
