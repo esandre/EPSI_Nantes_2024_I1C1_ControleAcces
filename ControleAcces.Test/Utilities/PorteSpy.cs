@@ -2,10 +2,10 @@
 
 internal class PorteSpy : IPorte
 {
-    public bool MethodeOuvrirAppelée { get; private set; }
+    public ushort NombreAppelsMéthodeOuvrir { get; private set; }
 
     public void Ouvrir()
     {
-        MethodeOuvrirAppelée = true;
+        NombreAppelsMéthodeOuvrir++;
     }
 }

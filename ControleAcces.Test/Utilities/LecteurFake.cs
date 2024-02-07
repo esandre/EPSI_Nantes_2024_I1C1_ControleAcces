@@ -2,10 +2,20 @@
 
 internal class LecteurFake : ILecteur
 {
-    public bool BadgeDétecté { get; private set; }
+    private bool _badgeDétectéAuProchainAppel;
+
+    public bool BadgeDétecté
+    {
+        get
+        {
+            var réponse = _badgeDétectéAuProchainAppel;
+            _badgeDétectéAuProchainAppel = false;
+            return réponse;
+        }
+    }
 
     public void SimulerPrésentationBadge()
     {
-        BadgeDétecté = true;
+        _badgeDétectéAuProchainAppel = true;
     }
 }
