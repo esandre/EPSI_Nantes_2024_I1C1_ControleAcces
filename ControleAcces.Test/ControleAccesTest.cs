@@ -36,5 +36,21 @@ namespace ControleAcces.Test
             // ALORS cette porte s'ouvre
             Assert.False(porte.MethodeOuvrirAppelée);
         }
+
+        [Fact]
+        public void CasSansPrésentation()
+        {
+            // ETANT DONNE un lecteur
+            // ET une porte lui étant liée
+            var lecteur = new LecteurFake();
+            var porte = new PorteSpy();
+            var moteur = new MoteurOuverture(porte);
+
+            // QUAND le moteur d'ouverture interroge ce lecteur
+            moteur.Interroger(lecteur);
+
+            // ALORS cette porte ne s'ouvre pas
+            Assert.False(porte.MethodeOuvrirAppelée);
+        }
     }
 }
